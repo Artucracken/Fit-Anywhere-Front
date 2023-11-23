@@ -1,0 +1,45 @@
+
+<!--<p>Aquí puedes encotnrar un listado de ejercicios, para más infromación haz click sobre ellos</p>
+<div>
+  <h5>Ejercicio:</h5>
+  <ul *ngFor="let ejer of ejercicio">
+    <li>
+      <a (click)="mostrarEjercicio(ejer)" style="cursor: pointer; text-decoration: underline; color: blue;">{{ejer.nombre}}</a>
+    </li>
+  </ul>
+</div>
+<div class="row " *ngIf="user.idRol == 1">
+  <button class="btn btn-primary col-2 align-self-end"><a class="nav-link" [routerLink]="['/Ejercicios']">Crear ejercicio</a></button>
+</div>
+<div class="row" style="position: fixed; top: 0; right: 0;">
+  <button class="btn btn-primary col-4 align-self-end"><a class="nav-link" [routerLink]="['/Ejercicios']">Crear ejercicio</a></button>
+</div>-->
+<div style="display: flex;">
+  <div class="col-10 ">
+    <h4 style="font-family: 'Arial Black', Gadget, sans-serif; text-align: center;">Aquí puedes encontrar un listado de ejercicios, para más información haz clic sobre ellos</h4>
+    <div class="d-flex align-items-center mb-4">
+      <div class="text-center" style="width: 200px; margin: 0 auto;">
+        <h6 style="margin-right: 10px;"><u>Filtrar por categoría:</u></h6>
+        <select class="form-select" (change)="filtrarPorCategoria($event)">
+          <option value="">Todas las categorías</option>
+          <option *ngFor="let categoria of categorias.categorias" [value]="categoria.id">{{categoria.valor}}</option>
+        </select>
+      </div>
+    </div>
+    <!--<select (change)="filtrarPorCategoria($event)">
+      <option value="">Todas las categorías</option>
+      <option *ngFor="let categoria of categorias.categorias" [value]="categoria.id">{{categoria.valor}}</option>
+    </select>-->
+    <div>
+      <h5>Ejercicio:</h5>
+      <ul *ngFor="let ejer of getEjerciciosFiltrados()">
+        <li>
+          <a (click)="mostrarEjercicio(ejer)" style="cursor: pointer; text-decoration: underline; color: blue;">{{ejer.nombre}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div *ngIf="user.idRol == 1" class="col-2  mt-1">
+    <button class="btn btn-primary"><a class="nav-link" [routerLink]="['/Ejercicios']">Crear ejercicio</a></button>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <h2>Crear nuevo post</h2>
+  <form action="/submit" method="post">
+    <div class="form-group">
+      <label for="titulo">Título:</label>
+      <input type="text" class="form-control" id="titulo" name="titulo" [(ngModel)]="newPost.titulo" placeholder="Introduce el título del post">
+    </div>
+      <div class="form-group">
+          <label for="categorias">Categorías:</label>
+          <select class="form-control" id="categorias" name="categorias" [(ngModel)]="newPost.categoriaId">
+            <option value="">Sleccione categoría</option>
+            <option *ngFor="let categoria of categorias.categorias" [value]="categoria.id">{{categoria.valor}}</option>
+              <!-- Añade más opciones de categorías según sea necesario -->
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="contenido">Contenido del post:</label>
+          <textarea class="form-control mb-2" id="contenido" name="contenido" rows="4" [(ngModel)]="newPost.contenido"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="crear()">Enviar</button>
+  </form>
+</div>

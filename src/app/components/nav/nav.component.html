@@ -1,0 +1,48 @@
+
+<nav class="navbar navbar-expand-xl navbar-dark" style="background-color: #1c4f7d; padding: 0;" aria-label="Sixth navbar example">
+  <div class="container-fluid ">
+    <img src="assets/LogoGrande.png" width="190" height="90" class="me-4">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample06" aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample06">
+      <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"><p class="zoom">Home</p></a>
+        </li>
+        <li class="nav-item" *ngIf="isLoged==true&& user.idRol == 2">
+          <a class="nav-link" [routerLink]="['Rutinas']"><p class="zoom">Rutinas</p></a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="isLoged==true && user.idRol == 1">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Rutinas</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['Rutinas']">Ver rutinas</a></li>
+            <li><a class="dropdown-item" [routerLink]="['NewRutina']">Crear rutina</a></li>
+          </ul>
+        </li>
+        <li class="nav-item" *ngIf="isLoged==true">
+          <a class="nav-link" [routerLink]="['ListadoEjercicios']"><p class="zoom">Ejercicios</p></a>
+        </li>
+        <li class="nav-item" *ngIf="isLoged==true && user.idRol == 2">
+          <a class="nav-link" [routerLink]="['Posts']">Posts</a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="isLoged==true && user.idRol == 1">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Posts</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['Posts']">Ver Posts</a></li>
+            <li><a class="dropdown-item" [routerLink]="['NewPost']">Crear post</a></li>
+          </ul>
+        </li>
+        <li class="nav-item" *ngIf="isLoged==true">
+          <a class="nav-link" [routerLink]="['Perfil']"><p class="zoom">Perfil</p></a>
+        </li>
+      </ul>
+      <form role="search">
+        <button *ngIf="isLoged==false" class="btn btn-dark" ><a class="nav-link active" href="Login">Inicia sesion</a></button>
+        <button *ngIf="isLoged==true" class="btn btn-dark" (click)="signOut()">Cerrar sesion</button>
+      </form>
+    </div>
+  </div>
+</nav>

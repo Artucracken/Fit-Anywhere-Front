@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <h2>Crear nueva rutina</h2>
+  <form action="/submit" method="post">
+      <div class="form-group">
+          <label for="categorias">Categorías:</label>
+          <select class="form-control" id="categorias" name="categorias" [(ngModel)]="nuevaRutina.categoriaId">
+            <option value="">Sleccione categoría</option>
+            <option *ngFor="let categoria of categorias.categorias" [value]="categoria.id">{{categoria.valor}}</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="contenido">Escriba la rutina:</label>
+          <textarea class="form-control mb-2" id="contenido" name="contenido" rows="4" [(ngModel)]="nuevaRutina.contenido"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="crear()">Enviar</button>
+  </form>
+</div>
+

@@ -1,0 +1,15 @@
+<div *ngIf="ejercicio">
+  <a href="ListadoEjercicios">Voler</a>
+  <h2>Detalles del Ejercicio</h2>
+  <div>
+    <label>Nombre: </label>
+    <span>{{ejercicio.nombre}}</span>
+  </div>
+  <div>
+    <label>Descripción: </label>
+    <span>{{ejercicio.descripcion}}</span>
+  </div>
+  <div>
+    <img src="data:image/jpeg;base64,{{ejercicio.imagen}}" style="width: 200px; height: 200px;">
+  </div>
+</div>

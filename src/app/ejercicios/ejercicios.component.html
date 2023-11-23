@@ -1,0 +1,22 @@
+<form class="mt-4"  (ngSubmit)="addEjercicio()" #f="ngForm" >
+  <div class="form-group">
+
+    <label for="name">Nombre</label>
+    <input type="text" class="form-control" name="nombre" [(ngModel)]="nuevoEjercicio.nombre"  placeholder="Enter name">
+
+    <label for="name">imagen</label>
+    <input type="file" class="form-control" name="imagen" #fileInput (change)="changeImage(fileInput)" title="seleccionar archivo con formato jpg,png o jpeg"  >
+
+    <label for="CategoriaId">Categoria</label>
+    <select id="CategoriaId" class="form-control" name="CategoriaId" [(ngModel)]="nuevoEjercicio.categoriaId" >
+      <option selected disabled select>Selecciona un plan...</option>
+      <option [value]="1">Categoria uno</option>
+  </select>
+
+    <label for="name">descripción</label>
+    <input type="text" class="form-control" name="descripcion" [(ngModel)]="nuevoEjercicio.descripcion" placeholder="Enter name">
+
+    <button  type="submit"  id="boton">Crear ejercicio</button>
+  </div>
+
+</form>

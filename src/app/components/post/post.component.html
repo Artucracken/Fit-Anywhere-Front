@@ -1,0 +1,10 @@
+<div *ngIf="post">
+  <a  href="Posts">Voler</a>
+  <h2><u>{{post.titulo}}</u></h2>
+  <div>
+    <div class="post-content" [innerHTML]="post.contenido"></div>
+  </div>
+  <div>
+    <label>Autor: {{post.nombre}}</label>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<!-- formulario.component.html -->
+
+<div class="container mt-1" style="margin-bottom: 60px;" *ngIf="user.id !=0">
+  <h2 style="text-align: center;">Datos del pefil</h2>
+  <div class="card box-shadow">
+    <div class="card-body d-flex justify-content-center align-items-center" style="background-color: #cde1f3;">
+      <div>
+        <p><u>Usuario:</u> {{user.nombre}} {{user.apellidos}}</p>
+        <p><u>DNI:</u> {{user.dni}}</p>
+        <p><u>Teléfono:</u> {{user.telefono}}</p>
+        <p><u>Correo:</u> {{user.correo}}</p>
+        <p><u>Username:</u> {{user.userName}}</p>
+      </div>
+    </div>
+  </div>
+  <p>Si lo desea puede modificar sus datos:</p>
+  <form [formGroup]="perfilForm">
+    <div class="form-row">
+      <div class="form-group ">
+          <label for="telefono">Teléfono</label>
+          <input type="text" class="form-control" id="telefono" placeholder="Teléfono" name="telefono" [(ngModel)]="user.telefono" formControlName="telefono">
+          <div *ngIf="perfilForm.controls['telefono'] !== null && perfilForm.controls['telefono'] !== undefined && perfilForm.controls['telefono'].errors && (perfilForm.controls['telefono'].touched || perfilForm.controls['telefono'].dirty)">
+            <small *ngIf="perfilForm.controls['telefono'].errors['required']" style="color: red;">El teléfono es obligatorio.</small>
+            <small *ngIf="perfilForm.controls['telefono'].errors['pattern']" style="color: red;">El teléfono debe tener 9 dígitos numéricos.</small>
+          </div>
+      </div>
+      <div class="form-group ">
+          <label for="correo">Correo</label>
+          <input type="email" class="form-control" id="correo" placeholder="Correo" name="correo" [(ngModel)]="user.correo" formControlName="correo">
+          <div *ngIf="perfilForm.controls['correo'] !== null && perfilForm.controls['correo'] !== undefined && perfilForm.controls['correo'].errors && (perfilForm.controls['correo'].touched || perfilForm.controls['correo'].dirty)">
+            <small *ngIf="perfilForm.controls['correo'].errors['required']" style="color: red;">El correo es obligatorio.</small>
+            <small *ngIf="perfilForm.controls['correo'].errors['pattern']" style="color: red;">Introduce un correo válido.</small>
+          </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group ">
+        <label for="userName">Nombre de usuario</label>
+        <input type="text" class="form-control" id="userName" placeholder="Nombre de usuario" name="userName" [(ngModel)]="user.userName" formControlName="userName">
+        <div *ngIf="perfilForm.controls['userName'] !== null && perfilForm.controls['userName'] !== undefined && perfilForm.controls['userName'].errors && (perfilForm.controls['userName'].touched || perfilForm.controls['userName'].dirty)">
+          <small *ngIf="perfilForm.controls['userName'].errors['required']" style="color: red;">El nombre de usuario es obligatorio.</small>
+          <small *ngIf="perfilForm.controls['userName'].errors['minlength']" style="color: red;">El nombre de usuario debe tener al menos 2 caracteres.</small>
+        </div>
+      </div>
+      <div class="form-group ">
+        <label for="password">Contraseña</label>
+        <input type="password" class="form-control" id="password" placeholder="Contraseña" name="password" [(ngModel)]="user.password" formControlName="password">
+        <div *ngIf="perfilForm.controls['password'] !== null && perfilForm.controls['password'] !== undefined && perfilForm.controls['password'].errors && (perfilForm.controls['password'].touched || perfilForm.controls['password'].dirty)">
+          <small *ngIf="perfilForm.controls['password'].errors['required']" style="color: red;">La contraseña es obligatoria.</small>
+          <small *ngIf="perfilForm.controls['password'].errors['minlength']" style="color: red;">La contraseña debe tener al menos 8 caracteres.</small>
+          <small *ngIf="perfilForm.controls['password'].errors['maxlength']" style="color: red;">La contraseña no debe tener más de 16 caracteres.</small>
+      </div>
+    </div>
+    </div>
+    <button type="submit" [disabled]="perfilForm.invalid" class="btn btn-primary mt-3" (click)="onSubmit()" >Modificar</button>
+  </form>
+</div>
+    <!--<div class="mb-2">
+      <label for="telefono" class="form-label">Teléfono:</label>
+      <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="user.telefono" required>
+    </div>
+
+    <div class="mb-2">
+      <label for="correo" class="form-label">Correo:</label>
+      <input type="text" class="form-control" id="correo" name="correo" [(ngModel)]="user.correo" required>
+    </div>
+
+    <div class="mb-2">
+      <label for="username" class="form-label">Username:</label>
+      <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.userName" required>
+    </div>
+
+    <div class="mb-2">
+      <label for="pass" class="form-label">Contraseña:</label>
+      <input type="password" class="form-control" id="pass" name="pass" [(ngModel)]="user.password" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Modificar</button>
+
+</div>-->
+

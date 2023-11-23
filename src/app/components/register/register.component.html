@@ -1,0 +1,92 @@
+<div class="container mt-2 mb-2">
+  <div class="row">
+      <div class="col-md-8">
+          <form [formGroup]="registerForm">
+              <div class="form-row">
+                  <div class="form-group col-md-8">
+                      <label for="nombre">Nombre</label>
+                      <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombe" formControlName="nombre">
+                      <div *ngIf="registerForm.controls['nombre'] !== null && registerForm.controls['nombre'] !== undefined && registerForm.controls['nombre'].errors && (registerForm.controls['nombre'].touched || registerForm.controls['nombre'].dirty)">
+                        <small *ngIf="registerForm.controls['nombre'].errors['required']" style="color: red;">El nombre es obligatorio.</small>
+                        <small *ngIf="registerForm.controls['nombre'].errors['minlength']" style="color: red;">El nombre debe tener al menos 2 caracteres.</small>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-8">
+                      <label for="apellidos">Apellido</label>
+                      <input type="text" class="form-control" id="apellidos" placeholder="Apellido" name="apellidos" formControlName="apellidos">
+                      <div *ngIf="registerForm.controls['apellidos'] !== null && registerForm.controls['apellidos'] !== undefined && registerForm.controls['apellidos'].errors && (registerForm.controls['apellidos'].touched || registerForm.controls['apellidos'].dirty)">
+                        <small *ngIf="registerForm.controls['apellidos'].errors['required']" style="color: red;">Los apellidos son obligatorios.</small>
+                        <small *ngIf="registerForm.controls['apellidos'].errors['minlength']" style="color: red;">Los apellidos deben tener al menos 2 caracteres.</small>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="form-group col-md-8">
+                      <label for="telefono">Teléfono</label>
+                      <input type="text" class="form-control" id="telefono" placeholder="Teléfono" name="telefono" formControlName="telefono">
+                      <div *ngIf="registerForm.controls['telefono'] !== null && registerForm.controls['telefono'] !== undefined && registerForm.controls['telefono'].errors && (registerForm.controls['telefono'].touched || registerForm.controls['telefono'].dirty)">
+                        <small *ngIf="registerForm.controls['telefono'].errors['required']" style="color: red;">El teléfono es obligatorio.</small>
+                        <small *ngIf="registerForm.controls['telefono'].errors['pattern']" style="color: red;">El teléfono debe tener 9 dígitos numéricos.</small>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-8">
+                      <label for="correo">Correo</label>
+                      <input type="email" class="form-control" id="correo" placeholder="Correo" name="correo" formControlName="correo">
+                      <div *ngIf="registerForm.controls['correo'] !== null && registerForm.controls['correo'] !== undefined && registerForm.controls['correo'].errors && (registerForm.controls['correo'].touched || registerForm.controls['correo'].dirty)">
+                        <small *ngIf="registerForm.controls['correo'].errors['required']" style="color: red;">El correo es obligatorio.</small>
+                        <small *ngIf="registerForm.controls['correo'].errors['email']" style="color: red;">Introduce un correo válido.</small>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="form-group col-md-8">
+                      <label for="planId">Plan</label>
+                      <select id="planId" class="form-control" name="planId" formControlName="plan">
+                          <option selected disabled select>Selecciona un plan...</option>
+                          <option *ngFor="let plan of plans" [value]="plan.id">{{plan.valor}} - Precio: {{plan.precio}}</option>
+                      </select>
+                      <div *ngIf="registerForm.controls['plan'] !== null && registerForm.controls['plan'] !== undefined && registerForm.controls['plan'].errors && (registerForm.controls['plan'].touched || registerForm.controls['plan'].dirty)">
+                        <small *ngIf="registerForm.controls['plan'].errors['required']" style="color: red;">Debes seleccionar un plan.</small>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-8">
+                      <label for="userName">Nombre de usuario</label>
+                      <input type="text" class="form-control" id="userName" placeholder="Nombre de usuario" name="userName" formControlName="userName">
+                      <div *ngIf="registerForm.controls['userName'] !== null && registerForm.controls['userName'] !== undefined && registerForm.controls['userName'].errors && (registerForm.controls['userName'].touched || registerForm.controls['userName'].dirty)">
+                        <small *ngIf="registerForm.controls['userName'].errors['required']" style="color: red;">El nombre de usuario es obligatorio.</small>
+                        <small *ngIf="registerForm.controls['userName'].errors['minlength']" style="color: red;">El nombre de usuario debe tener al menos 2 caracteres.</small>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="form-group col-md-8">
+                      <label for="password">Contraseña</label>
+                      <input type="password" class="form-control" id="password" placeholder="Contraseña" name="password" formControlName="password">
+                      <div *ngIf="registerForm.controls['password'] !== null && registerForm.controls['password'] !== undefined && registerForm.controls['password'].errors && (registerForm.controls['password'].touched || registerForm.controls['password'].dirty)">
+                        <small *ngIf="registerForm.controls['password'].errors['required']" style="color: red;">La contraseña es obligatoria.</small>
+                        <small *ngIf="registerForm.controls['password'].errors['minlength']" style="color: red;">La contraseña debe tener al menos 8 caracteres.</small>
+                        <small *ngIf="registerForm.controls['password'].errors['maxlength']" style="color: red;">La contraseña no debe tener más de 16 caracteres.</small>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-8">
+                      <label for="dni">DNI</label>
+                      <input type="text" class="form-control" id="dni" placeholder="DNI" name="dni" formControlName="dni">
+                      <div *ngIf="registerForm.controls['dni'] !== null && registerForm.controls['dni'] !== undefined && registerForm.controls['dni'].errors && (registerForm.controls['dni'].touched || registerForm.controls['dni'].dirty)">
+                        <small *ngIf="registerForm.controls['dni'].errors['required']" style="color: red;">El DNI es obligatorio.</small>
+                        <small *ngIf="registerForm.controls['dni'].errors['pattern']" style="color: red;">El DNI debe tener 8 números y una letra al final.</small>
+                    </div>
+                  </div>
+              </div>
+              <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary mt-3" (click)="onSubmit()" >Registrarse</button>
+
+          </form>
+      </div>
+      <div class="col-md-4 d-flex flex-column align-items-center">
+        <h2 style="font-family: 'Pacifico', cursive; font-size: 2.5rem; color: #007bff;">¡Registrate ya y no esperes más!</h2>
+        <!--<div style="margin-top: 20px;">
+            <img src="https://via.placeholder.com/150" alt="Imagen 1" >
+            <img src="https://via.placeholder.com/150" alt="Imagen 2">
+        </div>-->
+    </div>
+  </div>
+</div>
