@@ -77,7 +77,10 @@ export class CreatePostComponent {
     );
 
   }
-
+  esCategoriaPermitida(idCategoria: number): boolean {
+    const idsPermitidos = [1, 2, 7, 10, 11];
+    return idsPermitidos.includes(idCategoria);
+  }
   crear(){
     this.newPost.usuarioId = this.user.id!;
     const contenidoFormateado = this.formatContent(this.newPost.contenido);

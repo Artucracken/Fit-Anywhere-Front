@@ -4,8 +4,11 @@
       <div class="form-group">
           <label for="categorias">Categorías:</label>
           <select class="form-control" id="categorias" name="categorias" [(ngModel)]="nuevaRutina.categoriaId">
-            <option value="">Sleccione categoría</option>
-            <option *ngFor="let categoria of categorias.categorias" [value]="categoria.id">{{categoria.valor}}</option>
+            <ng-container *ngFor="let categoria of categorias.categorias">
+              <option [value]="categoria.id" *ngIf="esCategoriaPermitida(categoria.id)">
+                {{categoria.valor}}
+              </option>
+            </ng-container>
           </select>
       </div>
       <div class="form-group">

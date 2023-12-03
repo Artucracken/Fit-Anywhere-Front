@@ -75,7 +75,10 @@ export class ListadoEjerciciosComponent {
       error => console.log(error)
     );
   }
-
+  esCategoriaPermitida(idCategoria: number): boolean {
+    const idsPermitidos = [3, 4, 5, 6, 9];
+    return idsPermitidos.includes(idCategoria);
+  }
       mostrarEjercicio(ejercicio: any){
         this.ejercicioSeleccionado.emit(ejercicio.id);
         this.router.navigate(['/EjercicioDetail',ejercicio.id]);

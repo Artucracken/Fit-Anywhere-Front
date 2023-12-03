@@ -127,6 +127,10 @@ export class PostsComponent {
     //this.ejercicioSeleccionado.emit(ejercicio.id);
     this.router.navigate(['/Post',post.id]);
   }
+  esCategoriaPermitida(idCategoria: number): boolean {
+    const idsPermitidos = [1, 2, 7, 10, 11];
+    return idsPermitidos.includes(idCategoria);
+  }
   deletePost(id:number){
     this.postService.deletePost(id).subscribe(
       resp=>this.response.success = resp.success,

@@ -92,7 +92,10 @@ export class CreateRutinaComponent {
     );
       this.router.navigate(['Rutinas']);
   }
-
+  esCategoriaPermitida(idCategoria: number): boolean {
+    const idsPermitidos = [3, 4, 5, 6, 9];
+    return idsPermitidos.includes(idCategoria);
+  }
   formatContent(content: string): string {
     // Reemplaza los saltos de línea con etiquetas <br> y conserva los espacios en blanco
     const paragraphs = content.split('\n');

@@ -21,8 +21,12 @@
       <div class="text-center" style="width: 200px; margin: 0 auto;">
         <h6 style="margin-right: 10px;"><u>Filtrar por categoría:</u></h6>
         <select class="form-select" (change)="filtrarPorCategoria($event)">
-          <option value="">Todas las categorías</option>
-          <option *ngFor="let categoria of categorias.categorias" [value]="categoria.id">{{categoria.valor}}</option>
+          <option value="">Todos los ejercicios</option>
+          <ng-container *ngFor="let categoria of categorias.categorias">
+            <option [value]="categoria.id" *ngIf="esCategoriaPermitida(categoria.id)">
+              {{categoria.valor}}
+            </option>
+          </ng-container>
         </select>
       </div>
     </div>

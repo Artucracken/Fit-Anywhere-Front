@@ -1,6 +1,7 @@
 <div *ngIf="categoriaSeleccionada == false" class="row mt-4 ms-2 me-2">
-  <div class="col-md-4" *ngFor="let categoria of categorias.categorias">
-    <div class="card mb-4 box-shadow" (click)="filtrarPorCategoria(categoria.id)">
+  <ng-container *ngFor="let categoria of categorias.categorias">
+  <div class="col-md-4" *ngIf="esCategoriaPermitida(categoria.id)">
+    <div class="card mb-4 box-shadow"  (click)="filtrarPorCategoria(categoria.id)">
       <div class="card-body text-center" style="background-color: #97b7d3;">
         <h5 class="card-title"><u>{{categoria.valor}}</u></h5>
 
@@ -11,6 +12,7 @@
       </div>
     </div>
   </div>
+</ng-container>
 </div>
 
 <div *ngIf="categoriaSeleccionada">

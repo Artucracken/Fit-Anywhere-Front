@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IEjercicioRequest } from '../interfaces/IEjercicioRequest';
+import { IListCategoryResponse } from '../interfaces/IListCategoryResponse';
+import { CategoriaServiceService } from '../Services/categoria-service.service';
 import { EjerciciosServiceService } from '../Services/ejercicios-service.service';
 
 @Component({
@@ -16,8 +18,8 @@ export class EjerciciosComponent {
     descripcion:"",
     imagen:""
   }
-
-  constructor( private router: Router,private ejerciciosService: EjerciciosServiceService){}
+  categorias: IListCategoryResponse={succes:false, categorias:[], error:"" };
+  constructor( private router: Router,private ejerciciosService: EjerciciosServiceService, private categoryService: CategoriaServiceService){}
 
   ngOnInit(){
     const token = localStorage.getItem('tokenExpire');
@@ -45,6 +47,11 @@ export class EjerciciosComponent {
         console.log("dentro del else");
       }
     }
+      //RECUPERAMOS TODAS LAS CATEGORIAS
+      this.categoryService.getCategorias().subscribe(
+        listado =>this.categorias = listado,
+        error => console.log(error)
+      );
   }
 
   changeImage(fileInput: HTMLInputElement) {
@@ -60,7 +67,10 @@ export class EjerciciosComponent {
     this.nuevoEjercicio.imagen = reader.result as string;
     });
   }
-
+  esCategoriaPermitida(idCategoria: number): boolean {
+    const idsPermitidos = [3, 4, 5, 6, 9];
+    return idsPermitidos.includes(idCategoria);
+  }
   addEjercicio(){
     if (this.nuevoEjercicio.imagen) {
       this.nuevoEjercicio.imagen = this.nuevoEjercicio.imagen.split(",")[1];

@@ -9,8 +9,11 @@
 
     <label for="CategoriaId">Categoria</label>
     <select id="CategoriaId" class="form-control" name="CategoriaId" [(ngModel)]="nuevoEjercicio.categoriaId" >
-      <option selected disabled select>Selecciona un plan...</option>
-      <option [value]="1">Categoria uno</option>
+      <ng-container *ngFor="let categoria of categorias.categorias">
+        <option [value]="categoria.id" *ngIf="esCategoriaPermitida(categoria.id)">
+          {{categoria.valor}}
+        </option>
+      </ng-container>
   </select>
 
     <label for="name">descripción</label>
