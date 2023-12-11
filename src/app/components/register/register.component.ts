@@ -16,7 +16,7 @@ import { UserServiceService } from 'src/app/Services/user-service.service';
 export class RegisterComponent {
 
   registerForm!: FormGroup;
-
+  showToast = false;
   newUser: IRegister = {
     nombre: "",
     apellidos: "",
@@ -111,8 +111,9 @@ export class RegisterComponent {
           succes.success = resp.success;
           succes.error = resp.error;
           if(resp.success == true){
-            console.log("el registro se ha completado bien "+ resp.success);
-            this.router.navigate(['Login']);
+            this.showToast = true;
+            this.autoCloseToast();
+            //this.router.navigate(['Login']);
           }else{
             console.log("el registro se ha completado mal "+ resp.error);
           }
@@ -126,6 +127,12 @@ export class RegisterComponent {
   }
   redirige(){
     this.router.navigate(['Login']);
+  }
+  autoCloseToast() {
+    setTimeout(() => {
+      this.showToast = false;
+      this.router.navigate(['Login']);
+    }, 2000); // 5000 milisegundos = 5 segundos
   }
 }
 

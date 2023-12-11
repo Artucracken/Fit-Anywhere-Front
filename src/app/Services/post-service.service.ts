@@ -59,7 +59,7 @@ export class PostServiceService {
     .pipe(
       map((resp) => {
         console.log("Respuesta: " + JSON.stringify(resp));
-        window.location.reload();
+        //window.location.reload();
         return resp;
       })
     );

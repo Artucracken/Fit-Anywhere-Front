@@ -27,3 +27,12 @@
   </div>
 </form>
 
+<div *ngIf="showToast" class="custom-toast-alert">
+  <div class="toast-header-alert">
+    <strong class="mr-auto">Login incorrecto</strong>
+
+  </div>
+  <div class="toast-body">
+    Nombre de usuario o contraseña incorrectos
+  </div>
+</div>

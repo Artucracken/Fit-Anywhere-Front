@@ -16,7 +16,7 @@ import { ILoginDataResponse } from 'src/app/interfaces/ILoginDataResponse';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
+  showToast = false;
   isLoading: boolean = false;
   isLoged:boolean = false;
   //loginForm!: FormGroup;
@@ -35,7 +35,7 @@ export class LoginComponent {
 
   ngOnInit(): void {
     const jsonString = localStorage.getItem('user');
-
+//this.showToast = false;
     // Verificar si la cadena JSON existe en localStorage
     if (jsonString == null) {
       console.log(jsonString);
@@ -91,15 +91,18 @@ export class LoginComponent {
             );
           },
           error: (error) => {
-            /*this.toastr.error(this.translate.instant("LOGIN.INCORRECT"), 'Tube Tracker',{
-              tapToDismiss: true,
-              closeButton: true,
-              positionClass: 'toast-bottom-right'
-            });*/
+            this.showToast = true;
+            this.autoCloseToast();
+            console.log(this.showToast);
           }
         }
       )
     );
+  }
+  autoCloseToast() {
+    setTimeout(() => {
+      this.showToast = false;
+    }, 5000); // 5000 milisegundos = 5 segundos
   }
   openRegisterForm(): void {
    /* this.activeModelService.close();

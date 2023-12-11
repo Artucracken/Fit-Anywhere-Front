@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+.custom-toast-alert {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 300px;
+  background-color: #f8d7da; /* Fondo rojo claro */
+  border: 1px solid #dc3545; /* Borde rojo */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #721c24; /* Color de texto oscuro */
+  cursor: pointer;
+}
+
+.toast-header-alert {
+  padding: 0.5rem;
+  background-color: #dc3545; /* Fondo rojo oscuro para la cabecera */
+  color: #fff; /* Color de texto blanco para la cabecera */
+  border-bottom: 1px solid #dc3545; /* Borde inferior rojo oscuro */
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+.custom-toast-success {
+  position: absolute;
+  top: 1rem; /* Ajusta la posición superior */
+  left: 1rem; /* Ajusta la posición izquierda */
+  width: 300px;
+  background-color: #d4edda; /* Fondo verde claro */
+  border: 1px solid #c3e6cb; /* Borde verde */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #155724; /* Color de texto oscuro */
+  cursor: pointer;
+}
+
+.toast-header-success {
+  padding: 0.5rem;
+  background-color: #28a745; /* Fondo verde oscuro para la cabecera de éxito */
+  color: #fff; /* Color de texto blanco para la cabecera */
+  border-bottom: 1px solid #218838; /* Borde inferior verde oscuro */
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.toast-body {
+  padding: 0.75rem;
+}

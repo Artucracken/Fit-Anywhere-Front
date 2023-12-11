@@ -23,6 +23,7 @@ export class PostsComponent {
   selectedCategory:number| null = null;
   categoriaSeleccionada: boolean = false;
   response: IResponse = {success:false, error:""};
+  showToast = false;
   constructor(private router: Router,private postService: PostServiceService, private categoryService: CategoriaServiceService){}
 
   ngOnInit(){
@@ -132,11 +133,20 @@ export class PostsComponent {
     return idsPermitidos.includes(idCategoria);
   }
   deletePost(id:number){
+    this.categoriaSeleccionada = false;
     this.postService.deletePost(id).subscribe(
       resp=>this.response.success = resp.success,
       error=> this.response.error = error
     );
+      this.showToast = true;
+      this.autoCloseToast();
     //window.location.reload();
+  }
+  autoCloseToast() {
+    setTimeout(() => {
+      this.showToast = false;
+      window.location.reload();
+    }, 2000); // 5000 milisegundos = 5 segundos
   }
   volver(){}
 }
